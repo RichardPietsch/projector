@@ -21,19 +21,6 @@ npm run dev
 ## Run with Docker Desktop
 Prerequisite: Docker Desktop is running.
 
-### Option A: one-command build directly from GitHub URL
-This now works because the repository includes a root `Dockerfile`.
-
-```bash
-docker build -t projector https://github.com/RichardPietsch/projector
-```
-
-Run it:
-```bash
-docker run --rm -p 5173:5173 -p 3001:3001 projector
-```
-
-### Option B: docker compose (separate API + web containers)
 1. Build and start both containers:
    ```bash
    docker compose up --build
