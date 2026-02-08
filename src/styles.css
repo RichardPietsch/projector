@@ -1,0 +1,76 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f6f7fb;
+  color: #1a1d28;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.toolbar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+button {
+  border: 1px solid #c5c8d4;
+  background: white;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+button.active {
+  background: #293e94;
+  color: white;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  margin-bottom: 8px;
+}
+
+th, td {
+  border: 1px solid #d7dae7;
+  padding: 6px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.form-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+input, select {
+  padding: 6px;
+  border: 1px solid #ccd1e2;
+}
+
+.import-label {
+  border: 1px solid #c5c8d4;
+  background: white;
+  padding: 6px 10px;
+  display: inline-flex;
+  gap: 8px;
+}
+
+.import-label input {
+  max-width: 170px;
+}
+
+.error {
+  background: #ffdede;
+  border: 1px solid #f09f9f;
+  padding: 8px;
+  margin: 10px 0;
+}
