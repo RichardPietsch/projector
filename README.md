@@ -38,12 +38,8 @@ docker build -t projector .
 
 Run it:
 ```bash
-docker run --rm -p 3001:3001 projector
+docker run --rm -p 5173:5173 -p 3001:3001 projector
 ```
-
-Then open:
-- App: http://localhost:3001
-- API state endpoint: http://localhost:3001/api/state
 
 ### Option B: docker compose (separate API + web containers)
 1. Build and start both containers:
@@ -72,22 +68,6 @@ docker buildx build --load -f /Dockerfile -t projector "https://github.com/Richa
 ```
 
 Also verify the latest Dockerfile exists on GitHub before building.
-
-
-### If startup fails around `better-sqlite3/lib/database.js:65`
-This usually means native bindings were not built for your container image.
-
-Use a clean rebuild without cache:
-```bash
-docker build --no-cache -t projector .
-docker run --rm -p 3001:3001 projector
-```
-
-For compose:
-```bash
-docker compose build --no-cache
-docker compose up
-```
 
 ## Connect this project to your GitHub repository
 From this project folder, run:

@@ -1,7 +1,5 @@
 import express from 'express';
 import cors from 'cors';
-import path from 'node:path';
-import fs from 'node:fs';
 import {
   initDb,
   getDashboardData,
@@ -105,15 +103,7 @@ app.post('/api/import', (req, res) => {
   res.status(204).send();
 });
 
-const distPath = path.join(process.cwd(), 'dist');
-if (fs.existsSync(distPath)) {
-  app.use(express.static(distPath));
-  app.get('*', (_req, res) => {
-    res.sendFile(path.join(distPath, 'index.html'));
-  });
-}
-
-const port = Number(process.env.PORT || 3001);
+const port = 3001;
 app.listen(port, () => {
   console.log(`API listening on ${port}`);
 });
