@@ -21,6 +21,27 @@ npm run dev
 ## Run with Docker Desktop
 Prerequisite: Docker Desktop is running.
 
+### Option A: build from GitHub URL (recommended syntax)
+If you build from a GitHub URL, use the **git URL format** (`.git`) and a branch/tag.
+
+```bash
+docker buildx build --load -t projector "https://github.com/RichardPietsch/projector.git#main"
+```
+
+If your Docker version does not support buildx URL syntax, clone first and build locally:
+
+```bash
+git clone https://github.com/RichardPietsch/projector.git
+cd projector
+docker build -t projector .
+```
+
+Run it:
+```bash
+docker run --rm -p 5173:5173 -p 3001:3001 projector
+```
+
+### Option B: docker compose (separate API + web containers)
 1. Build and start both containers:
    ```bash
    docker compose up --build
@@ -32,6 +53,21 @@ Prerequisite: Docker Desktop is running.
    ```bash
    docker compose down
    ```
+
+### If you still get `unknown instruction: <!DOCTYPE`
+Docker is parsing an HTML file as a Dockerfile (not the repo Dockerfile). Use one of these fixes:
+
+```bash
+# A) clone + local build (most reliable)
+git clone https://github.com/RichardPietsch/projector.git
+cd projector
+docker build -f Dockerfile -t projector .
+
+# B) remote build with explicit dockerfile path (buildx)
+docker buildx build --load -f /Dockerfile -t projector "https://github.com/RichardPietsch/projector.git#main"
+```
+
+Also verify the latest Dockerfile exists on GitHub before building.
 
 ## Connect this project to your GitHub repository
 From this project folder, run:
